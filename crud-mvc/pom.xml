@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Declaración estándar XML -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Define que es un proyecto Maven y su esquema XML -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <!-- Versión del modelo POM que estamos usando (siempre 4.0.0 en Maven moderno) -->
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.9</version>
+        <relativePath/>
+    </parent>
+    <!-- Hereda configuraciones del starter parent de Spring Boot, lo que simplifica versiones y plugins -->
+
+    <groupId>com.petcare1</groupId>
+    <artifactId>crud-mvc</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>crud-mvc</name>
+    <description>Prueba tecnica</description>
+    <!-- Definición de identificación del proyecto: grupo, nombre, versión y descripción -->
+
+    <properties>
+        <java.version>21</java.version>
+        <hibernate.version>6.6.26.Final</hibernate.version>
+    </properties>
+    <!-- Propiedades del proyecto:
+         - java.version define la versión de Java a usar.
+         - hibernate.version permite centralizar la versión de Hibernate. -->
+
+    <dependencies>
+        <!-- Dependencias del proyecto: librerías que necesitamos -->
+
+        <!-- Spring Boot JPA starter: Hibernate y JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Web starter: MVC, REST y Tomcat embebido -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Thymeleaf starter: motor de plantillas HTML -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- Oracle JDBC driver -->
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>21.12.0.0</version>
+        </dependency>
+
+        <!-- Hibernate community dialects: para Oracle y otras DB -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-community-dialects</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <!-- DevTools: recarga automática en desarrollo -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Soporte de JSON para LocalDate/LocalDateTime -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+
+        <!-- WebJars para Bootstrap: CSS y JS desde Maven -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>5.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+            <version>0.51</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>bootstrap-icons</artifactId>
+            <version>1.11.1</version>
+        </dependency>
+
+        <!-- Lombok: para generar getters, setters y constructores automáticamente -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Dependencias para testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    <!-- Configuración de build: plugin de Spring Boot para empaquetar y ejecutar la app -->
+</project>
+
+

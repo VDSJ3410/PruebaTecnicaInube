@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- Define que este es un documento HTML5 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- Namespace de Thymeleaf para poder usar atributos th:* -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Codificación de caracteres del documento -->
+    <title>Formulario Comida de Gatito</title>
+    <!-- Título que aparece en la pestaña del navegador -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Incluye Bootstrap para estilos y diseño responsivo -->
+</head>
+
+<body>
+<div class="container mt-5">
+    <!-- Contenedor de Bootstrap con margen superior -->
+
+    <h1 class="mb-4" th:text="${comida.id} == null ? 'Agregar Comida' : 'Editar Comida'"></h1>
+    <!-- Título dinámico: si no hay id, se mostrará "Agregar Comida", si hay id, "Editar Comida" -->
+
+    <form th:action="@{${comida.id} == null ? '/comidas' : '/comidas/' + ${comida.id}}" method="post">
+        <!-- Formulario que envía datos por POST
+             La acción cambia dinámicamente: si es nuevo registro va a '/comidas', si es edición va a '/comidas/{id}' -->
+
+        <div class="mb-3">
+            <label for="nombreGatito" class="form-label">Nombre del Gatito</label>
+            <!-- Etiqueta para el input de nombre del gatito -->
+            <input type="text" id="nombreGatito" name="nombreGatito" class="form-control" th:value="${comida.nombreGatito}">
+            <!-- Campo de texto con valor dinámico, si hay un registro existente muestra su nombre -->
+        </div>
+
+        <div class="mb-3">
+            <label for="horaComida" class="form-label">Hora de Comida</label>
+            <!-- Etiqueta para el input de hora -->
+            <input type="time" id="horaComida" name="horaComida" class="form-control" th:value="${comida.horaComida}">
+            <!-- Campo tipo hora, valor dinámico del registro -->
+        </div>
+
+        <div class="mb-3">
+            <label for="tipoComida" class="form-label">Tipo de Comida</label>
+            <!-- Etiqueta para el tipo de comida -->
+            <input type="text" id="tipoComida" name="tipoComida" class="form-control" th:value="${comida.tipoComida}">
+            <!-- Campo de texto, valor dinámico -->
+        </div>
+
+        <div class="mb-3">
+            <label for="responsable" class="form-label">Responsable</label>
+            <!-- Etiqueta para responsable -->
+            <input type="text" id="responsable" name="responsable" class="form-control" th:value="${comida.responsable}">
+            <!-- Campo de texto, valor dinámico -->
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <!-- Botón de envío para guardar el formulario -->
+        <a href="/comidas" class="btn btn-secondary">Cancelar</a>
+        <!-- Botón que redirige de vuelta a la lista sin guardar -->
+    </form>
+</div>
+</body>
+</html>
+
+
